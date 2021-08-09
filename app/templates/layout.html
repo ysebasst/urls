@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <!-- SEO -->
+  <meta property="og:site_name" content="ysebasst" />
+  <meta property="og:title" content="{% if title %}{{title}} | {% endif %}ysebasst" />
+  <meta property="og:description"
+    content="{% if description %}{{description}}{% else %}ysebasst description{% endif %}" />
+  <meta property="og:image" content="https://media-public.canva.com/MADGyNmJgbU/4/screen_2x.jpg" />
+  <meta property="og:url" content="https://www.ysst.netlify.app/" />
+  <meta name="twitter:image:alt" content="ysebasst Wallpaper" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="description" content="{% if description %}{{description}}{% else %}ysebasst description{% endif %}">
+  <title>{% if title %}{{title}} | {% endif %}ysebasst</title>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="nav__container">
+      <div class="nav__brand">YSEBASST</div>
+      <ul class="nav__menu">
+        <li class="nav__item"><a href="{{ url_for('home') }}">Inicio</a></li>
+        {% if session %}
+        <li class="nav__item"><a href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+        {% else %}
+        <li class="nav__item"><a href="{{ url_for('signin') }}">Ingresar</a></li>
+        <li class="nav__item"><a href="{{ url_for('signup') }}">Registrarse</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  <main>
+    <div class="container">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

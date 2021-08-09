@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<h1>Bienvenido, {{session.username}}</h1>
+{% if users %}
+{% for user in users %}
+<ul>
+  <li><strong>Username: </strong>{{user.username}}</li>
+  <li><strong>Email: </strong>{{user.email}}</li>
+  <li><strong>Password: </strong>{{user.password}}</li>
+</ul>
+{% endfor %}
+{% endif %}
+{% endblock %}

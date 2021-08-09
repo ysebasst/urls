@@ -1,0 +1,20 @@
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  color: #333;
+  background-color: #eee;
+}
+
+main {
+  padding: 0.5rem 1rem;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
