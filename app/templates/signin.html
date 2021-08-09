@@ -4,10 +4,10 @@
 <form class="form" action="/auth/signin" method="POST">
   <h3 class="form__title">Ingresar</h3>
   <div class="form__group">
-    <input class="form__control" type="email" name="email" placeholder="Ingrese correo" />
+    <input class="form__control" type="email" name="email" placeholder="Ingrese correo" autocomplete="off" />
   </div>
   <div class="form__group">
-    <input class="form__control" type="password" name="password" placeholder="Ingrese contraseña" />
+    <input class="form__control" type="password" name="password" placeholder="Ingrese contraseña" autocomplete="off" />
   </div>
   <button class="button button__block" type="submit">Ingresar</button>
   <p>¿No tienes una cuenta? <a href="{{ url_for('signup') }}">Registrate</a></p>
