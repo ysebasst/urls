@@ -3,6 +3,7 @@ html {
 }
 
 body {
+  overflow-x: hidden;
   margin: 0;
   font-family: sans-serif;
   color: #333;
@@ -10,7 +11,17 @@ body {
 }
 
 main {
+  overflow: hidden;
   padding: 0.5rem 1rem;
+}
+
+.icon {
+  display: inline-block;
+  font-size: inherit;
+  height: 1em;
+  overflow: visible;
+  vertical-align: -0.125em;
+  fill: currentColor;
 }
 
 *,

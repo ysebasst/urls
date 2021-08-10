@@ -1,29 +1,34 @@
 .urls-container {
-  padding: 0.5rem;
-  margin: 0.5rem 0;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0.25rem -0.75rem;
 }
 
 .url-item {
   display: flex;
-  padding: 1rem;
-  background-color: #eee;
+  align-items: flex-start;
+  width: 354px;
+  max-width: 100%;
+  padding: 0.5rem;
+  margin: 0.125rem 0.75rem;
+  background-color: #fff;
   border: 1px solid #ccc;
-
-  &:not(:last-child) {
-    margin-bottom: 0.5rem;
-  }
 
   a {
     flex-grow: 1;
     display: block;
-    font-size: 1.5rem;
+    padding: 0.5rem 0;
     text-decoration: none;
     color: inherit;
   }
-  
+
   h3 {
     margin: 0;
+    font-size: 1.25rem;
+  }
+
+  button {
+    font-size: 1.25rem;
   }
 }

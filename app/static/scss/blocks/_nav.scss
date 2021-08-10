@@ -1,6 +1,7 @@
 .nav {
   padding: 0 1rem;
   background-color: #3470a2;
+  user-select: none;
 
   &__container {
     max-width: 1110px;
@@ -13,12 +14,6 @@
   }
 
   &__brand {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff;
-  }
-
-  &__username {
     font-size: 1.25rem;
     font-weight: bold;
     color: #fff;

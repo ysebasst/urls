@@ -19,8 +19,8 @@
       <a href="{{url.url}}" target="_blank">
         <h3>{{url.title}}</h3>
       </a>
-      <button class="button button__edit">Editar</button>
-      <button class="button button__delete">Eliminar</button>
+      <button class="button button__edit">{% include 'icons/edit-icon.html' %}</button>
+      <button class="button button__delete">{% include 'icons/trash-icon.html' %}</button>
     </article>
     {% endfor %}
     {% else %}
@@ -44,8 +44,8 @@
         <a href="${url.url}" target="_blank">
           <h3>${url.title}</h3>
         </a>
-        <button class="button button__edit">Editar</button>
-        <button class="button button__delete">Eliminar</button>
+        <button class="button button__edit">{% include 'icons/edit-icon.html' %}</button>
+        <button class="button button__delete">{% include 'icons/trash-icon.html' %}</button>
       </article>
       `
     if (urlsContainer.firstElementChild.id == "empty") {
@@ -85,6 +85,7 @@
         alert(resJSON.error)
       } else {
         formUrls.reset()
+        e.target.title.focus()
         renderUrl(resJSON.data)
       }
     } catch (error) {
@@ -94,6 +95,8 @@
 
   urlsContainer.addEventListener("click", async e => {
     if (e.target.classList.contains("button__delete")) {
+      if (!confirm("¿Estas seguro que quieres borrar?"))
+        return
       id = e.target.parentElement.id
       const url = `${window.location.origin}/urls/${id}`
       try {

@@ -8,24 +8,23 @@
   <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
   <!-- SEO -->
-  <meta property="og:site_name" content="ysebasst" />
-  <meta property="og:title" content="{% if title %}{{title}} | {% endif %}ysebasst" />
+  <meta property="og:site_name" content="Urls App" />
+  <meta property="og:title" content="{% if title %}{{title}} | {% endif %}Urls App" />
   <meta property="og:description"
-    content="{% if description %}{{description}}{% else %}ysebasst description{% endif %}" />
+    content="{% if description %}{{description}}{% else %}Urls App description{% endif %}" />
   <meta property="og:image" content="https://media-public.canva.com/MADGyNmJgbU/4/screen_2x.jpg" />
-  <meta property="og:url" content="https://www.ysst.netlify.app/" />
-  <meta name="twitter:image:alt" content="ysebasst Wallpaper" />
+  <meta property="og:url" content="https://www.ysst-urls.herokuapp.com/" />
+  <meta name="twitter:image:alt" content="Urls App Wallpaper" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <meta name="description" content="{% if description %}{{description}}{% else %}ysebasst description{% endif %}">
-  <title>{% if title %}{{title}} | {% endif %}ysebasst</title>
+  <meta name="description" content="{% if description %}{{description}}{% else %}Urls App description{% endif %}">
+  <title>{% if title %}{{title}} | {% endif %}Urls App</title>
 </head>
 
 <body>
   <nav class="nav">
     <div class="nav__container">
-      <div class="nav__brand">Urls App</div>
-      {% if session %}<span class="nav__username">Bienvenido, {{session.username}}</span>{% endif %}
+      <div class="nav__brand">{% if session %}Bienvenido, {{session.username}}{% else %}Urls App{% endif %}</div>
       <ul class="nav__menu">
         <li class="nav__item"><a href="{{ url_for('home') }}">Inicio</a></li>
         {% if session %}
