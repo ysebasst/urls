@@ -105,7 +105,9 @@
           alert(resJSON.error)
         } else {
           document.getElementById(id).remove()
-          renderEmpty()
+          if (urlsContainer.children.length == 0) {
+            renderEmpty()
+          }
         }
       } catch (error) {
         console.log(error)
