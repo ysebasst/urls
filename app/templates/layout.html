@@ -24,7 +24,8 @@
 <body>
   <nav class="nav">
     <div class="nav__container">
-      <div class="nav__brand">YSEBASST</div>
+      <div class="nav__brand">Urls App</div>
+      {% if session %}<span class="nav__username">Bienvenido, {{session.username}}</span>{% endif %}
       <ul class="nav__menu">
         <li class="nav__item"><a href="{{ url_for('home') }}">Inicio</a></li>
         {% if session %}

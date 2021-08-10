@@ -1,14 +1,117 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1>Bienvenido, {{session.username}}</h1>
-{% if users %}
-{% for user in users %}
-<ul>
-  <li><strong>Username: </strong>{{user.username}}</li>
-  <li><strong>Email: </strong>{{user.email}}</li>
-  <li><strong>Password: </strong>{{user.password}}</li>
-</ul>
-{% endfor %}
-{% endif %}
+<section class="urls-section">
+  <h1>Urls App</h1>
+  <form id="form-urls" class="form">
+    <div class="form__group">
+      <input class="form__control" type="text" name="title" placeholder="Titulo" autocomplete="off" autofocus>
+    </div>
+    <div class="form__group">
+      <input class="form__control" type="url" name="url" placeholder="Url" autocomplete="off">
+    </div>
+    <button class="button button__block" type="submit">Agregar</button>
+  </form>
+  <div id="urls-container" class="urls-container">
+    {% if urls %}
+    {% for url in urls %}
+    <article class="url-item" id="{{url._id}}">
+      <a href="{{url.url}}" target="_blank">
+        <h3>{{url.title}}</h3>
+      </a>
+      <button class="button button__edit">Editar</button>
+      <button class="button button__delete">Eliminar</button>
+    </article>
+    {% endfor %}
+    {% else %}
+    <article class="url-item" id="empty">
+      <h3>No hay elementos</h3>
+    </article>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  const formUrls = document.getElementById("form-urls")
+  const urlsContainer = document.getElementById("urls-container")
+
+  function renderUrl(url) {
+    let html = ""
+    html += `
+      <article class="url-item" id="${url._id}">
+        <a href="${url.url}" target="_blank">
+          <h3>${url.title}</h3>
+        </a>
+        <button class="button button__edit">Editar</button>
+        <button class="button button__delete">Eliminar</button>
+      </article>
+      `
+    if (urlsContainer.firstElementChild.id == "empty") {
+      urlsContainer.innerHTML = html
+    } else {
+      urlsContainer.innerHTML += html
+    }
+  }
+
+  function renderEmpty() {
+    let html = ""
+    html += `
+      <article class="url-item" id="empty">
+          <h3>No hay elementos</h3>
+      </article>
+      `
+    urlsContainer.innerHTML = html
+  }
+
+  formUrls.addEventListener("submit", async (e) => {
+    e.preventDefault()
+    try {
+      const url = `${window.location.origin}/urls`
+      const res = await fetch(url,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            title: e.target.title.value,
+            url: e.target.url.value,
+          })
+        })
+      const resJSON = await res.json()
+      if (resJSON.error) {
+        alert(resJSON.error)
+      } else {
+        formUrls.reset()
+        renderUrl(resJSON.data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  })
+
+  urlsContainer.addEventListener("click", async e => {
+    if (e.target.classList.contains("button__delete")) {
+      id = e.target.parentElement.id
+      const url = `${window.location.origin}/urls/${id}`
+      try {
+        res = await fetch(url, {
+          method: "DELETE"
+        })
+        resJSON = await res.json()
+        if (resJSON.error) {
+          alert(resJSON.error)
+        } else {
+          document.getElementById(id).remove()
+          renderEmpty()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  })
+
+</script>
 {% endblock %}

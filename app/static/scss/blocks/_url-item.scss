@@ -1,0 +1,29 @@
+.urls-container {
+  padding: 0.5rem;
+  margin: 0.5rem 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+.url-item {
+  display: flex;
+  padding: 1rem;
+  background-color: #eee;
+  border: 1px solid #ccc;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  a {
+    flex-grow: 1;
+    display: block;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  h3 {
+    margin: 0;
+  }
+}

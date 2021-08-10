@@ -1,4 +1,3 @@
 class Config:
     SECRET_KEY = "mysec"
-    SQLALCHEMY_DATABASE_URI = "sqlite:///../database.db"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MONGO_URI = "mongodb+srv://root:apto222@cluster0.7j1kt.mongodb.net/urlsdb?retryWrites=true&w=majority"
