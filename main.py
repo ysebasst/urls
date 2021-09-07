@@ -23,7 +23,7 @@ def home():
         return redirect(url_for("signin"))
     users_db = db.users.find()
     users = normalizeData(users_db)
-    urls_db = db.urls.find({"user_id": session["user_id"]})
+    urls_db = db.urls.find({"user_id": session["user_id"]}).sort("title")
     urls = normalizeData(urls_db)
     ctx = {
         "title": "Inicio",
